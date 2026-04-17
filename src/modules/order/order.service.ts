@@ -43,13 +43,13 @@ export const orderService = {
 
   getUniqueTenantsByOwner: async (ownerId: string) => {
     const orders = await orderRepository.findActiveByOwnerIdPopulated(ownerId);
-    const filterRs = orders.filter((order: any) => Array.isArray(order.tenantId) && order.tenantId.length > 0);
+    const filterRs: any[] = orders.filter((order: any) => Array.isArray(order.tenantId) && order.tenantId.length > 0);
     
     // Get all unique tenants
     const tenantIds = [...new Set(filterRs.flatMap((item: any) => item.tenantId.map((t: any) => t._id.toString())))];
     
     // For each tenant, find their active info from the orders
-    const result = [];
+    const result: any[] = [];
     const now = new Date();
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 
