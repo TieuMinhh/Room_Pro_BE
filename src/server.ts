@@ -19,8 +19,8 @@ const START_SERVER = () => {
 
     app.use(cookieParser());
 
-    const hostname = env.APP_HOST;
-    const port = env.APP_POST;
+    // Prefer Render's dynamic PORT, fallback to APP_POST for local dev
+    const port = process.env.PORT || env.APP_POST || 8081;
 
     app.use(cors(corsOptions));
     app.use(express.json());
@@ -40,9 +40,10 @@ const START_SERVER = () => {
     //   })
     // })
 
-    server.listen(port, hostname, () => {
+    // Omit hostname to allow listening on 0.0.0.0 (required by Render)
+    server.listen(port as number, () => {
         // eslint-disable-next-line no-console
-        console.log(`Hello ${env.AUTHOR}, I am running at http://${hostname}:${port}/`);
+        console.log(`Hello ${env.AUTHOR}, I am running at port ${port}`);
     });
 };
 
