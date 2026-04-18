@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-expressjs-mongodb-base-project",
+  "name": "room_pro",
   "private": true,
   "version": "1.0.0",
   "author": "MinhLaoMa - Một Lập Trình Viên",
@@ -57,6 +57,7 @@
     "@types/multer": "^2.1.0",
     "@types/node": "^25.5.2",
     "@types/nodemailer": "^8.0.0",
+    "@types/streamifier": "^0.1.2",
     "babel-plugin-module-resolver": "^5.0.0",
     "eslint": "^8.47.0",
     "nodemon": "^3.0.1",

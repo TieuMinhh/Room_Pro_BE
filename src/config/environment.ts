@@ -22,6 +22,8 @@ interface Env {
   SECURE_SECRET: string;
   VNPAY_HOST: string;
   ADMIN_USER_ID: string;
+  GOOGLE_CLIENT_EMAIL?: string;
+  GOOGLE_PRIVATE_KEY?: string;
 }
 
 export const env: Env = {
@@ -45,5 +47,7 @@ export const env: Env = {
   VNPAY_TMN_CODE: process.env.VNPAY_TMN_CODE as string,
   SECURE_SECRET: process.env.SECURE_SECRET as string,
   VNPAY_HOST: process.env.VNPAY_HOST as string,
-  ADMIN_USER_ID: process.env.ADMIN_USER_ID as string
+  ADMIN_USER_ID: process.env.ADMIN_USER_ID as string,
+  GOOGLE_CLIENT_EMAIL: process.env.GOOGLE_CLIENT_EMAIL as string,
+  GOOGLE_PRIVATE_KEY: process.env.GOOGLE_PRIVATE_KEY as string
 }

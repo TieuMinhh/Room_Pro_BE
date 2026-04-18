@@ -1,16 +1,29 @@
 import { google } from "googleapis";
 import { JWT } from "google-auth-library";
 import streamifier from "streamifier";
-import apikeys from "../../google_apikey.json";
+import { env } from "~/config/environment";
 
 const SCOPES = ['https://www.googleapis.com/auth/drive'];
 
+let clientEmail = env.GOOGLE_CLIENT_EMAIL;
+let privateKey = env.GOOGLE_PRIVATE_KEY;
+
+
+// Fix formatting for private keys passed via environment variables
+if (privateKey) {
+    privateKey = privateKey.replace(/\\n/g, '\n');
+}
+
 // Function to authorize and get access to Google Drive API
 async function authorize(): Promise<JWT> {
+    if (!clientEmail || !privateKey) {
+        throw new Error("Missing Google Drive API credentials. Please set GOOGLE_CLIENT_EMAIL and GOOGLE_PRIVATE_KEY.");
+    }
+
     const auth = new (google.auth as any).JWT(
-        apikeys.client_email,
+        clientEmail,
         undefined,
-        apikeys.private_key,
+        privateKey,
         SCOPES
     );
 
