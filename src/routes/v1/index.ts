@@ -26,6 +26,10 @@ Router.get('/status', (req, res) => {
   res.status(200).json({ message: 'Api v1 is ready (V2 Account-Profile Architecture)' });
 });
 
+Router.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'RoomPro Server is running' });
+});
+
 Router.get('/time', async (req, res, next) => {
   try {
     const userId = req.jwtDecoded?._id;

@@ -5,7 +5,8 @@ export const WHITELIST_DOMAINS: string[] = [
   "http://localhost:5173",
   "http://localhost:3000",
   "http://localhost:8000",
-];
+  env.WEBSITE_DOMAIN_PRODUCTION
+].filter(Boolean) as string[];
 
 export const USER_ROLES = {
   ADMIN: "admin",
